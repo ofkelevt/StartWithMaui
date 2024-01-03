@@ -28,14 +28,15 @@
 
         </Button>
 
+      
 
         <Image
             x:Name="slide_img"
             Aspect="AspectFit"
             HeightRequest="240"
-            Source="dotnet_bot.svg"
+            Source="https://raw.githubusercontent.com/jamesmontemagno/app-monkeys/master/baboon.jpg"
             WidthRequest="240" />
-
+        <Label x:Name="label" Text="1/13"></Label>
         <Button
             x:Name="down_btn"
             BorderColor="Brown"

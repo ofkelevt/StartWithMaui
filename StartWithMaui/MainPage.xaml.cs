@@ -1,17 +1,18 @@
-﻿namespace StartWithMaui;
+﻿using MauiApp2;
+namespace StartWithMaui;
 
 public partial class MainPage : ContentPage
 {
 	List<string> imagesUrl = new List<string>();
 	int current = 0;
-
-	public MainPage()
+    List<Monkey> monkeys = new List<Monkey>();
+	
+    public MainPage()
 	{
+		monkeys = Monkey.GetMonkeys();
 		InitializeComponent();
-		imagesUrl.Add("dotnet_bot.svg");
-		imagesUrl.Add("https://img.freepik.com/free-photo/cupcakes-dark-chocolate-sugar-butter-sour-cream-condenced-milk-side-view-jpg_141793-3537.jpg");
-		imagesUrl.Add("https://img.freepik.com/free-psd/3d-rendering-earth-icon-with-tree-isolated_47987-7658.jpg");
-		imagesUrl.Add("https://img.freepik.com/free-psd/blue-cube-with-questionmark-sign-boxes_47987-7785.jpg");
+		for (int i = 0; i < monkeys.ToArray().Length; i++)
+			imagesUrl.Add(monkeys[i].Image);
 	}
 
 	private void ButtonEnabled()
@@ -37,8 +38,9 @@ public partial class MainPage : ContentPage
 			//נבדוק מי הכפתור שהפעיל את האירוע
 			if (btn == up_btn)//האם זה הכפתור למעלה?
 				current = current + 1;
-
-			if (btn == down_btn)
+        slide_img.Source= imagesUrl[current];
+		label.Text = $"{current + 1}/ {monkeys.ToArray().Length}";
+            if (btn == down_btn)
 				current = current - 1;
 
 			slide_img.Source = imagesUrl[current];
